@@ -1,5 +1,6 @@
 import unittest
 from intricate_integer import IntricateInteger
+from intricate_manipulation import has_intricate_peculiar_property
 
 class TestIntricateInteger(unittest.TestCase):
     def test_valid_instantiation(self):
@@ -73,6 +74,35 @@ class TestIntricateInteger(unittest.TestCase):
         c = IntricateInteger(0, 7, 2)
         self.assertEqual(str(c), "<0 mod 7 | 2>")
         print("Test edge case (object 0): PASSED")
+
+class TestPeculiarProperty(unittest.TestCase):
+    def test_has_intricate_peculiar_property_valid_true(self):
+        # Test a valid case where the property holds true
+        n = 7
+        alpha = 6
+        result = has_intricate_peculiar_property(n, alpha)
+        self.assertTrue(result)
+
+    def test_has_intricate_peculiar_property_valid_false(self):
+        # Test a valid case where the property holds false
+        n = 5
+        alpha = 2
+        result = has_intricate_peculiar_property(n, alpha)
+        self.assertFalse(result)
+
+    def test_has_intricate_peculiar_property_invalid_n_zero(self):
+        # Test an invalid case where n is zero
+        n = 0
+        alpha = 3
+        with self.assertRaises(ValueError):
+            has_intricate_peculiar_property(n, alpha)
+
+    def test_has_intricate_peculiar_property_invalid_alpha_out_of_range(self):
+        # Test an invalid case where alpha is out of range [0, n-1]
+        n = 4
+        alpha = 5
+        with self.assertRaises(ValueError):
+            has_intricate_peculiar_property(n, alpha)
 
 if __name__ == "__main__":
     unittest.main()

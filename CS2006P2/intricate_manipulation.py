@@ -4,7 +4,7 @@ def has_intricate_peculiar_property(n, alpha):
     # Iterate over integers in the range [0, n)
     for x in range(n):
         intricate_integer = IntricateInteger(x, n, alpha)
-        # Check if the square of intricate_integer equals x
+        # Check if the square of integer equals x
         if (intricate_integer * intricate_integer).object != x:
             return False
     return True
