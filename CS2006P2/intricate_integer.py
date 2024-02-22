@@ -1,6 +1,7 @@
 import math
 
 class IntricateInteger:
+
     def __init__(self, obj, n, alpha):
         if not isinstance(obj, int) or obj < 0 or obj >= n:
             raise ValueError("Input integer must be in the range [0, n-1] (For modulus)")
@@ -25,4 +26,5 @@ class IntricateInteger:
         lcm = math.lcm(self.object, other.object)
         result = (self.object + other.object + self.alpha * lcm) % self.n
         return IntricateInteger(result, self.n, self.alpha)
+    
     
