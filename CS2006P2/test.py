@@ -106,7 +106,7 @@ class TestPeculiarProperty(unittest.TestCase):
         with self.assertRaises(ValueError):
             has_intricate_peculiar_property(n, alpha)
             
-#GOOF
+# Would you rather do tests like the ones above or multiple in one like the one below?
          
     def test_has_intricate_peculiar_property_invalid(self):
         # Test multiple different invalid cases
@@ -179,5 +179,6 @@ class TestAssociativeMultiplication(unittest.TestCase):
         for n, alpha in edge_cases:
             with self.subTest(n=n, alpha=alpha):
                 self.assertTrue(has_associative_intricate_multiplication(n, alpha), f"Associative property edge case failed for n={n}, alpha={alpha}")
+                
 if __name__ == "__main__":
     unittest.main()
