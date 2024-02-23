@@ -1,7 +1,6 @@
 import unittest
 from intricate_integer import IntricateInteger
-from intricate_manipulation import has_intricate_peculiar_property
-from intricate_multiplication import has_commutative_intricate_multiplication, has_associative_intricate_multiplication
+from intricate_multiplication import has_commutative_intricate_multiplication, has_associative_intricate_multiplication,has_intricate_peculiar_property
 
 
 class TestIntricateInteger(unittest.TestCase):
@@ -99,8 +98,8 @@ class TestPeculiarProperty(unittest.TestCase):
         # Test an invalid case where n is zero
         n = 0
         alpha = 3
-        result = has_intricate_peculiar_property(n, alpha)
-        self.assertTrue(result)
+        with self.assertRaises(ValueError):
+            has_intricate_peculiar_property(n, alpha)
         print(f"Test invalid case (n={n}, alpha={alpha}): PASSED")
 
     def test_invalid_alpha_out_of_range(self):
