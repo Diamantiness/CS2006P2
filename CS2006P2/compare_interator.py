@@ -50,8 +50,8 @@ def iterator_check_commutativity_for_all_pairs():
     for n in range(1, 51):
         for alpha in range(n):
             if not iterator_has_commutative_intricate_multiplication(n, alpha):
-                non_commutative_cases.append((n, alpha))
-    return non_commutative_cases
+                return False
+    return True
 
 
 def check_property_for_all_pairs():
@@ -66,20 +66,19 @@ def check_property_for_all_pairs():
 
 
 def check_commutativity_for_all_pairs():
-    non_commutative_cases = []
     for n in range(1, 51):
         for alpha in range(n):
             if not has_commutative_intricate_multiplication(n, alpha):
-                non_commutative_cases.append((n, alpha))
-    return non_commutative_cases
+                return False
+    return True
 
 
 def check_associativity_for_all_pairs():
     associative_cases = []
     for n in range(1, 20):
         for alpha in range(n):
-            if has_associative_intricate_multiplication(n, alpha):
-                associative_cases.append((n, alpha))
+            if not has_associative_intricate_multiplication(n, alpha):
+                return False
     return associative_cases
 
 compareTime()
