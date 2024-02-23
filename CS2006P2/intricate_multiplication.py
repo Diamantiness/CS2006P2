@@ -63,5 +63,6 @@ def check_associativity_for_all_pairs():
 
 if __name__ == "__main__":
     # Print whether the property holds for all pairs (n, alpha)
+    print(check_property_for_all_pairs())
     print(check_commutativity_for_all_pairs())
     print(check_associativity_for_all_pairs())

@@ -23,7 +23,7 @@ class IntricateInteger:
             raise ValueError("Intricate Integers mneed the same modulus and alpha")
         
         lcm = math.lcm(self.object, other.object)
-        result = (self.object + other.object + self.alpha * lcm) % self.n
+        result = (self.object + other.object + (self.alpha * lcm)) % self.n
         return IntricateInteger(result, self.n, self.alpha)
     
 class IntricateIntegers:
