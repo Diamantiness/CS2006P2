@@ -1,5 +1,4 @@
-import math, timeit
-from intricate_multiplication import has_commutative_intricate_multiplication, has_associative_intricate_multiplication
+import math
 
 class IntricateInteger:
     def __init__(self, obj, n, alpha):
