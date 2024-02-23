@@ -50,9 +50,3 @@ class IntricateIntegers:
         else:
             raise StopIteration
 
-if __name__ == "__main__":
-    intricate_set = IntricateIntegers(3, 2)
-
-    print("Iterating over IntricateIntegers instance:")
-    for element in intricate_set:
-        print(element)

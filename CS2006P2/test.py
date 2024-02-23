@@ -1,5 +1,5 @@
 import unittest
-from intricate_integer import IntricateInteger
+from intricate_integer import IntricateInteger, IntricateIntegers
 from intricate_multiplication import has_commutative_intricate_multiplication, has_associative_intricate_multiplication,has_intricate_peculiar_property
 
 
@@ -192,6 +192,33 @@ class TestAssociativeMultiplication(unittest.TestCase):
         for n, alpha in edge_cases:
             with self.subTest(n=n, alpha=alpha):
                 self.assertTrue(has_associative_intricate_multiplication(n, alpha), f"Associative property edge case failed for n={n}, alpha={alpha}")
-                
+
+class TestIntricateIntegers(unittest.TestCase):
+    def test_creation_and_size(self):
+        # Test creation of IntricateIntegers and size method
+        n = 5
+        alpha = 2
+        intricate_set = IntricateIntegers(n, alpha)
+        self.assertEqual(intricate_set.size(), n)
+        print("Test creation and size: PASSED")
+        
+    def test_string_representation(self):
+        # Test string representation of IntricateIntegers
+        n = 3
+        alpha = 1
+        intricate_set = IntricateIntegers(n, alpha)
+        expected_str = "<0 mod 3 | 1>, <1 mod 3 | 1>, <2 mod 3 | 1>"
+        self.assertEqual(str(intricate_set), expected_str)
+        print("Test string representation: PASSED")
+        
+    def test_iteration(self):
+        # Test iteration over IntricateIntegers
+        n = 4
+        alpha = 3
+        intricate_set = IntricateIntegers(n, alpha)
+        expected_elements = [IntricateInteger(i, n, alpha) for i in range(n)]
+        for element, expected_element in zip(intricate_set, expected_elements):
+            self.assertEqual(str(element), str(expected_element))
+        print("Test iteration: PASSED")
 if __name__ == "__main__":
     unittest.main() 
