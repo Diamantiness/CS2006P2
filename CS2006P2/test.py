@@ -181,4 +181,4 @@ class TestAssociativeMultiplication(unittest.TestCase):
                 self.assertTrue(has_associative_intricate_multiplication(n, alpha), f"Associative property edge case failed for n={n}, alpha={alpha}")
                 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main() 
