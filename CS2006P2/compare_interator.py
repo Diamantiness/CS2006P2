@@ -77,8 +77,8 @@ def check_associativity_for_all_pairs():
     associative_cases = []
     for n in range(1, 20):
         for alpha in range(n):
-            if not has_associative_intricate_multiplication(n, alpha):
-                return False
+            if has_associative_intricate_multiplication(n, alpha):
+                associative_cases.append((n, alpha))
     return associative_cases
 
 compareTime()
