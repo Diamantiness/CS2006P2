@@ -11,8 +11,8 @@ def compareTime():
     old_time = time.time() - start_time_old
 
     start_time_new = time.time()
-    new_associative_result = iterator_associative_multi()
-    new_commutative_result = iterator_commutative()
+    new_associative_result = iterator_check_associativity_for_all_pairs()
+    new_commutative_result = iterator_check_commutativity_for_all_pairs()
     new_property_result = iterator_check_property_for_all_pairs()
     new_time = time.time() - start_time_new
 
@@ -43,29 +43,40 @@ def iterator_check_property_for_all_pairs():
                 return False
     return True
 
-def iterator_associative_multi():
-    for n in range(1, 20):
-        for alpha in range(n):
-            intricate_integers = IntricateIntegers(n, alpha)
-            for x in intricate_integers:
-                for y in intricate_integers:
-                    for z in intricate_integers:
-                        xy = x * y
-                        yz = y * z
-                        left = xy * z
-                        right = x * yz
-                        if left.object != right.object:
-                            return False
+def iterator_has_associative_intricate_multiplication(n, alpha):
+    for element_x in IntricateIntegers(n, alpha):
+        for element_y in IntricateIntegers(n, alpha):
+            for element_z in IntricateIntegers(n, alpha):
+                xy = element_x * element_y
+                yz = element_y * element_z
+                left = xy * element_z
+                right = element_x * yz
+                if left.object != right.object:
+                    return False
     return True
 
-def iterator_commutative():
+def iterator_check_associativity_for_all_pairs():
+    associative_cases = []
+    for n in range(1, 20):
+        for alpha in range(n):
+            if iterator_has_associative_intricate_multiplication(n, alpha):
+                associative_cases.append((n, alpha))
+    return associative_cases
+
+def iterator_has_commutative_intricate_multiplication(n, alpha):
+    intricate_integers = IntricateIntegers(n, alpha)
+    for x in intricate_integers:
+        for y in intricate_integers:
+            if (x * y).object != (y * x).object:
+                return False
+    return True
+
+def iterator_check_commutativity_for_all_pairs():
+    non_commutative_cases = []
     for n in range(1, 51):
         for alpha in range(n):
-            intricate_integers = IntricateIntegers(n, alpha)
-            for x in intricate_integers:
-                for y in intricate_integers:
-                    if (x * y).object != (y * x).object:
-                        return False
-    return True
+            if not iterator_has_commutative_intricate_multiplication(n, alpha):
+                non_commutative_cases.append((n, alpha))
+    return non_commutative_cases
 
 compareTime()
