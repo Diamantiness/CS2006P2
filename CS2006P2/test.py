@@ -120,7 +120,7 @@ class TestPeculiarProperty(unittest.TestCase):
         print("Test property holds for all pairs: PASSED")
             
 # Would you rather do tests like the ones above or multiple in one like the one below?
-         
+#Lets jut do as many as possible lol        
     def test_has_intricate_peculiar_property_invalid(self):
         # Test multiple different invalid cases
         invalid_pairs =[(0, 0), #invalid as n is zero
@@ -139,6 +139,7 @@ class TestCommutativeMultiplication(unittest.TestCase):
         for n, alpha in commutive_pairs:
             with self.subTest(n=n, alpha=alpha):
                 self.assertTrue(has_commutative_intricate_multiplication(n, alpha), f"Commutative property failed for n={n}, alpha={alpha}")
+                
 
     #Cannot test cases where property holds false as no combination can result false
 
@@ -166,32 +167,36 @@ class TestAssociativeMultiplication(unittest.TestCase):
         associative_pairs = [(1, 0), (14, 7), (8, 4)]
         for n, alpha in associative_pairs:
             with self.subTest(n=n, alpha=alpha):
-                self.assertTrue(has_associative_intricate_multiplication(n, alpha), f"Associative property failed for n={n}, alpha={alpha}")
-                
+                result = has_associative_intricate_multiplication(n, alpha)
+                self.assertTrue(result, f"Associative property failed for n={n}, alpha={alpha}")
+                print(f"Test case for n={n}, alpha={alpha}: PASSED (Associative property holds)")
+
     def test_associative_property_valid_false(self):
         # Test cases where the property is expected to hold false
         non_associative_pairs = [(3, 1), (4, 1), (5, 1)]
         for n, alpha in non_associative_pairs:
             with self.subTest(n=n, alpha=alpha):
-                self.assertFalse(has_associative_intricate_multiplication(n, alpha), f"Associative property unexpectedly held for n={n}, alpha={alpha}")
+                result = has_associative_intricate_multiplication(n, alpha)
+                self.assertFalse(result, f"Associative property unexpectedly held for n={n}, alpha={alpha}")
+                print(f"Test case for n={n}, alpha={alpha}: PASSED (Associative property does not hold)")
 
     def test_associative_property_invalid(self):
         # Test cases where values are invalid
-        invalid_pairs = [(0, 0),  # invalid as n is zero
-                         (1, -1),  # both invalid as alpha is out of range
-                         (1, 1),
-                         (0, -1)]  # invalid as both n and alpha are invalid
+        invalid_pairs = [(0, 0), (1, -1), (1, 1), (0, -1)]
         for n, alpha in invalid_pairs:
             with self.subTest(n=n, alpha=alpha):
                 with self.assertRaises(ValueError):
                     has_associative_intricate_multiplication(n, alpha)
+                print(f"Test case for n={n}, alpha={alpha}: PASSED (ValueError raised)")
 
     def test_associative_property_for_edge_cases(self):
         # Tests edge cases
         edge_cases = [(1, 0), (2, 1)]
         for n, alpha in edge_cases:
             with self.subTest(n=n, alpha=alpha):
-                self.assertTrue(has_associative_intricate_multiplication(n, alpha), f"Associative property edge case failed for n={n}, alpha={alpha}")
+                result = has_associative_intricate_multiplication(n, alpha)
+                self.assertTrue(result, f"Associative property edge case failed for n={n}, alpha={alpha}")
+                print(f"Test case for n={n}, alpha={alpha}: PASSED (Associative property holds)")
 
 class TestIntricateIntegers(unittest.TestCase):
     def test_creation_and_size(self):
@@ -220,5 +225,6 @@ class TestIntricateIntegers(unittest.TestCase):
         for element, expected_element in zip(intricate_set, expected_elements):
             self.assertEqual(str(element), str(expected_element))
         print("Test iteration: PASSED")
+
 if __name__ == "__main__":
     unittest.main() 
