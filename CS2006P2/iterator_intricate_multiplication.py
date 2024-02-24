@@ -38,6 +38,5 @@ def intricate_roots_of_one(n, alpha):
     for element in intricate_integers:
         result = element * element
         if result.object == 1:
-            root_cases.append((element.object))
-            print('matched')
-    return len(root_cases)
+            root_cases.append(element.object)
+    return root_cases

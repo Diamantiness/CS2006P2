@@ -26,7 +26,9 @@ def compareTime():
 
     print("Finding roots of one...")
     check_nr_roots_of_one()
-
+    #roots_results = check_nr_roots_of_one()
+    #for count, roots in roots_results:
+     #   print(f"Number of roots: {count}, Roots: {roots}")
 
 def iterator_check_property_for_all_pairs():
     for n in range(1, 51):
@@ -49,7 +51,6 @@ def iterator_check_associativity_for_all_pairs():
 
 
 def iterator_check_commutativity_for_all_pairs():
-    non_commutative_cases = []
     for n in range(1, 51):
         for alpha in range(n):
             if not iterator_has_commutative_intricate_multiplication(n, alpha):
@@ -85,8 +86,10 @@ def check_associativity_for_all_pairs():
     return associative_cases
 
 def check_nr_roots_of_one():
-    for n in range(1, 25):
+    root_count_cases = []
+    for n in range(1, 26):
         for alpha in range(n):
-           nr_count_cases = intricate_roots_of_one(n, alpha)
-           print(nr_count_cases)
+            roots = intricate_roots_of_one(n, alpha)
+            root_count_cases.append((len(roots), roots))
+    print(root_count_cases)
 compareTime()
