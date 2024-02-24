@@ -1,4 +1,5 @@
 import time
+import math
 from intricate_multiplication import *
 from iterator_intricate_multiplication import *
 def compareTime():
@@ -26,6 +27,9 @@ def compareTime():
 
     print("Finding roots of one...")
     check_nr_roots_of_one()
+
+    print('Finding counterexample...')
+    find_counterexample()
     #roots_results = check_nr_roots_of_one()
     #for count, roots in roots_results:
      #   print(f"Number of roots: {count}, Roots: {roots}")
@@ -91,4 +95,12 @@ def check_nr_roots_of_one():
             roots = intricate_roots_of_one(n, alpha)
             print(f"For n={n}, alpha={alpha}: Number of roots = {len(roots)}, Roots = {roots}")
 
+def find_counterexample():
+    for n in range(1, 100):
+        for alpha in range(1, n, 2): 
+            if math.gcd(n, alpha) != 1:
+                roots = intricate_roots_of_one(n, alpha)
+                if len(roots) > 0:
+                    print(f"Counterexample found! n = {n}, alpha = {alpha}")
+                    return
 compareTime()
