@@ -30,3 +30,14 @@ def iterator_has_intricate_peculiar_property(n, alpha):
         if result.object != element.object:
             return False
     return True
+
+def intricate_roots_of_one(n, alpha):
+    root_cases = []
+    inputValidator(n, alpha)
+    intricate_integers = IntricateIntegers(n, alpha)
+    for element in intricate_integers:
+        result = element * element
+        if result.object == 1:
+            root_cases.append((element.object))
+            print('matched')
+    return len(root_cases)

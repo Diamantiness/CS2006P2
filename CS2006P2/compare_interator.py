@@ -24,6 +24,9 @@ def compareTime():
     print("Time taken by old functions:", old_time)
     print("Time taken by new functions:", new_time)
 
+    print("Finding roots of one...")
+    check_nr_roots_of_one()
+
 
 def iterator_check_property_for_all_pairs():
     for n in range(1, 51):
@@ -81,4 +84,9 @@ def check_associativity_for_all_pairs():
                 associative_cases.append((n, alpha))
     return associative_cases
 
+def check_nr_roots_of_one():
+    for n in range(1, 25):
+        for alpha in range(n):
+           nr_count_cases = intricate_roots_of_one(n, alpha)
+           print(nr_count_cases)
 compareTime()
