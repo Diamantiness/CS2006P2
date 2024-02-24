@@ -86,10 +86,9 @@ def check_associativity_for_all_pairs():
     return associative_cases
 
 def check_nr_roots_of_one():
-    root_count_cases = []
     for n in range(1, 26):
         for alpha in range(n):
             roots = intricate_roots_of_one(n, alpha)
-            root_count_cases.append((len(roots), roots))
-    print(root_count_cases)
+            print(f"For n={n}, alpha={alpha}: Number of roots = {len(roots)}, Roots = {roots}")
+
 compareTime()
