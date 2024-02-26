@@ -55,5 +55,18 @@ class TestCommutativeProperty(unittest.TestCase):
         print("Test for peculiar property with n = 7 and alpha = 5 passed.")
 
 
+    def test_intricate_roots_of_one(self):
+        # Test for n = 4, alpha = 3
+        roots = intricate_roots_of_one(4, 3)
+        expected_roots = [1]
+        self.assertEqual(roots, expected_roots)
+        print("Test for intricate roots of one passed.")
+
+    def test_intricate_roots_of_one_no_result(self):
+        # Test for n = 5, alpha = 2
+        roots = intricate_roots_of_one(8, 2)
+        expected_roots = []
+        self.assertEqual(roots, expected_roots)
+        print("Test for intricate roots of one with no result passed.")
 if __name__ == '__main__':
     unittest.main()
