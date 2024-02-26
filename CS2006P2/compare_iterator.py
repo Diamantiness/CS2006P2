@@ -33,6 +33,9 @@ def compareTime():
     #roots_results = check_nr_roots_of_one()
     #for count, roots in roots_results:
      #   print(f"Number of roots: {count}, Roots: {roots}")
+    print("\nGenerated intricate integers using generator_multi:")
+    for integer in generator_multi({IntricateInteger(2, 7, 1), IntricateInteger(3, 7, 1), IntricateInteger(5, 7, 1)}):
+        print(integer)
 
 def iterator_check_property_for_all_pairs():
     for n in range(1, 51):
