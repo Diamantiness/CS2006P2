@@ -43,6 +43,7 @@ def intricate_roots_of_one(n, alpha):
     return root_cases
 
 
+#https://blog.enterprisedna.co/how-to-generate-all-combinations-of-a-list-in-python/
 def generator_multi(S):
     result = set()
 
