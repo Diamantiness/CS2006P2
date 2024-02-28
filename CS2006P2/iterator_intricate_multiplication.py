@@ -1,6 +1,6 @@
 from intricate_integer import IntricateIntegers, IntricateInteger
 from input_validator import inputValidator
-from itertools import product
+from itertools import permutations
 
 def iterator_has_commutative_intricate_multiplication(n, alpha):
     intricate_integers = IntricateIntegers(n, alpha)
@@ -48,28 +48,16 @@ def generator_multi(S):
     result = set()
 
     for i in range(1, len(S) + 1):
-        combinations = [[]]  # Initialize with an empty subset
-        
-        # Loop through each element of S to add to existing subsets
-        for element in S:
-            # For each existing combination, create a new combination that includes the current element
-            for sub_set in list(combinations):  # Convert combinations to list to avoid unexpected behavior
-                new_sub_set = sub_set + [element]
-                combinations.append(new_sub_set)
-                print(new_sub_set)
-                print()
-
-        # Remove the empty subset from the combinations list
-        combinations.pop(0)
-
-
-        # Iterate over generated combinations and calculate product
-        for combo in combinations:
-            product_result = combo[0]  # Initialize with the first element
-            for element in combo[1:]:
+        # Generate permutations of size i
+        for perm in permutations(S, i):
+            # Calculate the product of the elements in the permutation
+            product_result = perm[0]  # Initialize with the first element
+            for element in perm[1:]:
                 product_result *= element  # Multiply subsequent elements
+            print(f"Permutation: {[str(obj) for obj in perm]}")
 
             # Check if product_result is not already present in result based on the .object attribute
             if all(product_result.object != intricate.object for intricate in result):
                 result.add(product_result)
+
     return result
