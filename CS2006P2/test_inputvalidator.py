@@ -6,6 +6,8 @@ class TestInputValidator(unittest.TestCase):
     def test_valid_input(self):
         # Test with valid inputs
         self.assertTrue(inputValidator(5, 2))  # Modulus = 5, Alpha = 2
+        self.assertTrue(inputValidator(1, 0))  # Modulus = 1, Alpha = 0
+        self.assertTrue(inputValidator(6, 4))  # Modulus = 6, Alpha = 4
         print("Test for valid inputs passed.")
 
     def test_invalid_modulus(self):
