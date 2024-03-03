@@ -101,14 +101,6 @@ def check_property_for_all_pairs():
                 return False
     return True
 
-def iterator_check_property_for_all_pairs():
-    for n in range(1, 51):
-        for alpha in range(n):
-            property_holds = iterator_has_intricate_peculiar_property(n, alpha)
-            if (alpha == n - 1) != property_holds:
-                return False
-    return True
-    
 def check_commutativity_for_all_pairs():
     for n in range(1, 51):
         for alpha in range(n):
