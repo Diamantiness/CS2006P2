@@ -1,8 +1,18 @@
-from intricate_integer import IntricateIntegers, IntricateInteger
+from intricate_integer import IntricateIntegers
 from input_validator import inputValidator
 from itertools import permutations
 
 def iterator_has_commutative_intricate_multiplication(n, alpha):
+    """
+    Checks if the IntricateIntegers iterator has commutative multiplication.
+
+    Parameters:
+    - n (int): The modulus.
+    - alpha (int): The multiplier.
+
+    Returns:
+    - bool: True if the multiplication is commutative, False otherwise.
+    """
     intricate_integers = IntricateIntegers(n, alpha)
     for x in intricate_integers:
         for y in intricate_integers:
@@ -11,6 +21,16 @@ def iterator_has_commutative_intricate_multiplication(n, alpha):
     return True
 
 def iterator_has_associative_intricate_multiplication(n, alpha):
+    """
+    Checks if the IntricateIntegers iterator has associative multiplication.
+
+    Parameters:
+    - n (int): The modulus.
+    - alpha (int): The multiplier.
+
+    Returns:
+    - bool: True if the multiplication is associative, False otherwise.
+    """
     for element_x in IntricateIntegers(n, alpha):
         for element_y in IntricateIntegers(n, alpha):
             for element_z in IntricateIntegers(n, alpha):
@@ -24,6 +44,16 @@ def iterator_has_associative_intricate_multiplication(n, alpha):
 
 
 def iterator_has_intricate_peculiar_property(n, alpha):
+    """
+    Checks if the IntricateIntegers iterator has the peculiar property.
+
+    Parameters:
+    - n (int): The modulus.
+    - alpha (int): The multiplier.
+
+    Returns:
+    - bool: True if the IntricateIntegers iterator has the peculiar property, False otherwise.
+    """
     inputValidator(n, alpha)
     intricate_integers = IntricateIntegers(n, alpha)
     for element in intricate_integers:
@@ -33,6 +63,16 @@ def iterator_has_intricate_peculiar_property(n, alpha):
     return True
 
 def intricate_roots_of_one(n, alpha):
+    """
+    Finds intricate roots of one.
+
+    Parameters:
+    - n (int): The modulus.
+    - alpha (int): The multiplier.
+
+    Returns:
+    - list: List of intricate integers whose square equals one.
+    """
     root_cases = []
     inputValidator(n, alpha)
     intricate_integers = IntricateIntegers(n, alpha)
@@ -43,8 +83,17 @@ def intricate_roots_of_one(n, alpha):
     return root_cases
 
 
-#https://blog.enterprisedna.co/how-to-generate-all-combinations-of-a-list-in-python/
+# https://blog.enterprisedna.co/how-to-generate-all-combinations-of-a-list-in-python/
 def generator_multi(S):
+    """
+    Generates all possible multiplications of intricate integers from a given list.
+
+    Parameters:
+    - S (list): A list of IntricateIntegers.
+
+    Returns:
+    - set: Set containing all possible multiplications of intricate integers.
+    """
     result = set()
 
     for i in range(1, len(S) + 1):

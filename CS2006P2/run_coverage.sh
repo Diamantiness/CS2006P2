@@ -1,5 +1,5 @@
 #!/bin/bash
-
+pip install coverage
 # Run the coverage command
 coverage run test.py
 
