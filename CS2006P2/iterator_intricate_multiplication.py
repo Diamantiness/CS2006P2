@@ -86,7 +86,7 @@ from collections import Counter
 
 def intricate_roots_for_each_pair(n):
     results = []
-    for n in range(1, n+1):
+    for n in range(0, n):
         for alpha in range(n):
             roots_count = len(intricate_roots_of_one(n, alpha))
             results.append((roots_count, (n, alpha)))

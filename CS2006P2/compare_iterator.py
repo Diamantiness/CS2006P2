@@ -166,10 +166,12 @@ def check_nr_roots_of_one():
 
     Prints the number of roots of one and their values for each pair (n, alpha).
     """
-    for n in range(1, 26):
-        for alpha in range(n):
-            roots = intricate_roots_of_one(n, alpha)
-            print(f"For n={n}, alpha={alpha}: Number of roots = {len(roots)}, Roots = {roots}")
+    results = intricate_roots_for_each_pair(26)  # assuming checking up to n=25
+
+    for nr_roots, count in results:
+        print(f"Number of roots = {nr_roots}, Count = {count}")
+
+check_nr_roots_of_one()
 
 def find_counterexample():
     """
