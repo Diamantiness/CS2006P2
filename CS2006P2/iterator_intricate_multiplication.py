@@ -35,8 +35,6 @@ def iterator_has_associative_intricate_multiplication(n, alpha):
     Returns:
     - bool: True if the multiplication is associative, False otherwise.
     """
-        
-        
     inputValidator(n, alpha)
 
     for element_x in IntricateIntegers(n, alpha):
@@ -94,15 +92,22 @@ def intricate_roots_of_one(n, alpha):
 
 
 def intricate_roots_for_each_pair(n):
+    """
+    Counts how many pairs have the same intricate roots
+
+    Parameters:
+    - n (int): The modulus.
+
+    Returns:
+    - list: List of touples, each touple containing an intricate root which occurred and the number of times it occurred
+    """
     results = []
     for n in range(0, n):
         for alpha in range(n):
             roots_count = len(intricate_roots_of_one(n, alpha))
             results.append((roots_count, (n, alpha)))
 
-    # Count how many times each number of roots occurs for different pairs
     results_counter = Counter([result[0] for result in results])
-    # Format results as list of tuples (number_of_roots, count)
     formatted_results = sorted([(key, value) for key, value in results_counter.items()])
 
     return formatted_results
