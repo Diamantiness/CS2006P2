@@ -126,12 +126,17 @@ def generator_multi(S):
     """
     result = set()
 
+    if len(S) == 0: 
+        print("Function must be given a non-empty list")
+        return result
+    
+
     s_list = list(S)
     alpha = s_list[0].alpha
     n = s_list[0].n
 
     inputValidator(n, alpha)
-        
+
     # Check if all elements in S have the same alpha and n
 
     if all(obj.alpha == alpha and obj.n == n for obj in s_list[1:]):

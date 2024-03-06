@@ -1,5 +1,6 @@
 import unittest
 from iterator_intricate_multiplication import *
+from intricate_integer import IntricateInteger
 
 class TestCommutativeProperty(unittest.TestCase):
     def test_has_commutative_intricate_multiplication(self):
@@ -91,6 +92,69 @@ class TestCommutativeProperty(unittest.TestCase):
         expected_roots2 = []
         self.assertEqual(roots2, expected_roots2)
         print("Test for intricate roots of one with no result passed.")
+
+    def test_intricate_roots_for_each_pair_small_n(self):
+        # Test for a small value of n to ensure function correctly counts pairs
+        results = intricate_roots_for_each_pair(4)
+        expected_results = [(0, 3), (1, 3)]
+        self.assertEqual(results, expected_results)
+        print("Test for the count of intricate roots for n=4 are passed.")
+    
+    def test_intricate_roots_for_each_pair_larger_n(self):
+        # Test for a larger value of n to check for correct counts in more complex scenarios
+        results = intricate_roots_for_each_pair(10)
+        expected_results = [(0, 18), (1, 27)]
+        self.assertEqual(results, expected_results)
+        print("Test for the count of intricate roots for n=10 passed.")
+    
+    def test_intricate_roots_for_each_pair_no_roots(self):
+        # Specifically test cases expected to have no roots for any pair
+        results = intricate_roots_for_each_pair(5)
+        # Most pairs yield no roots
+        expected_results = [(0, 5), (1, 5)] 
+        self.assertEqual(results, expected_results)
+        print("Test for the count of pairs with no roots for n=5 passed.")
+
+    def setUp(self):
+        # Setup intricate integers for following tests
+        self.obj1 = IntricateInteger(1, 5, 1)
+        self.obj2 = IntricateInteger(2, 5, 1)
+        self.obj3 = IntricateInteger(3, 5, 2) # Has different alpha value
+        self.obj4 = IntricateInteger(3, 6, 1) # Has different n value
+
+    def test_generator_multi_simple(self):
+        # Test with a simple list of IntricateIntegers
+        S = [self.obj1, self.obj2]
+        result = generator_multi(S)
+        # Verify the result contains the expected products
+        expected_products = {self.obj1 * self.obj2, self.obj1, self.obj2}
+        self.assertEqual(len(result), len(expected_products))
+        for product in expected_products:
+            self.assertTrue(any(product.object == res.object for res in result))
+
+    def test_generator_multi_single_element(self):
+        # Test with a single element list
+        S = [self.obj1]
+        result = generator_multi(S)
+        self.assertTrue(len(result) == 1 and next(iter(result)).object == self.obj1.object)
+
+    def test_generator_multi_empty_input(self):
+        # Test with an empty list
+        S = []
+        result = generator_multi(S)
+        self.assertEqual(len(result), 0)
+
+    def test_generator_multi_different_alpha(self):
+        # Test with elements having different n or alpha
+        S = [self.obj1, self.obj3]  # Different alpha
+        result = generator_multi(S)
+        self.assertEqual(len(result), 0)
+
+    def test_generator_multi_different_n(self):
+        # Test with elements having different n or alpha
+        S = [self.obj1, self.obj4]  # Different alpha
+        result = generator_multi(S)
+        self.assertEqual(len(result), 0)
 
 
 
