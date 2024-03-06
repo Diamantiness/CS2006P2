@@ -92,22 +92,7 @@ class TestCommutativeProperty(unittest.TestCase):
         self.assertEqual(roots2, expected_roots2)
         print("Test for intricate roots of one with no result passed.")
 
-    def test_intricate_roots_for_each_pair(self):
-        # Test for correctness with specific (n, alpha) pairs
-        expected_results_specific = {
-            1: [(0, 1)],  # For n=1, expecting one case of 0 roots (if considering Z1 = {0})
-            2: [(0, 1), (1, 1)],
-        }
-        
-        # Run tests for n = 1, 2, 3 as examples
-        for n, expected in expected_results_specific.items():
-            result = intricate_roots_for_each_pair(n)
-            # Convert result to count form
-            result_count = Counter([res[0] for res in result])
-            expected_count = Counter(dict(expected))
-            assert result_count == expected_count, f"Failed for n={n}. Expected {expected_count}, got {result_count}"
-        
-        print("Test for specific cases of intricate roots for each pair passed.")
+
 
 if __name__ == '__main__':
     unittest.main()

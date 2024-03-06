@@ -171,8 +171,6 @@ def check_nr_roots_of_one():
     for nr_roots, count in results:
         print(f"Number of roots = {nr_roots}, Count = {count}")
 
-check_nr_roots_of_one()
-
 def find_counterexample():
     """
     Finds a counterexample where intricate roots of one exist for pairs (n, alpha) that violate certain conditions.

@@ -1,6 +1,8 @@
 from intricate_integer import IntricateIntegers
 from input_validator import inputValidator
 from itertools import permutations
+from collections import Counter
+
 
 def iterator_has_commutative_intricate_multiplication(n, alpha):
     """
@@ -13,6 +15,8 @@ def iterator_has_commutative_intricate_multiplication(n, alpha):
     Returns:
     - bool: True if the multiplication is commutative, False otherwise.
     """
+    inputValidator(n, alpha)
+
     intricate_integers = IntricateIntegers(n, alpha)
     for x in intricate_integers:
         for y in intricate_integers:
@@ -31,6 +35,10 @@ def iterator_has_associative_intricate_multiplication(n, alpha):
     Returns:
     - bool: True if the multiplication is associative, False otherwise.
     """
+        
+        
+    inputValidator(n, alpha)
+
     for element_x in IntricateIntegers(n, alpha):
         for element_y in IntricateIntegers(n, alpha):
             for element_z in IntricateIntegers(n, alpha):
@@ -73,6 +81,8 @@ def intricate_roots_of_one(n, alpha):
     Returns:
     - list: List of intricate integers whose square equals one.
     """
+    inputValidator(n, alpha)
+
     root_cases = []
     inputValidator(n, alpha)
     intricate_integers = IntricateIntegers(n, alpha)
@@ -82,7 +92,6 @@ def intricate_roots_of_one(n, alpha):
             root_cases.append(element.object)
     return root_cases
 
-from collections import Counter
 
 def intricate_roots_for_each_pair(n):
     results = []
@@ -100,7 +109,6 @@ def intricate_roots_for_each_pair(n):
 
 
 
-# https://blog.enterprisedna.co/how-to-generate-all-combinations-of-a-list-in-python/
 def generator_multi(S):
     """
     Generates all possible multiplications of intricate integers from a given list.
@@ -113,17 +121,23 @@ def generator_multi(S):
     """
     result = set()
 
-    for i in range(1, len(S) + 1):
-        # Generate permutations of size i
-        for perm in permutations(S, i):
-            # Calculate the product of the elements in the permutation
-            product_result = perm[0]  # Initialize with the first element
-            for element in perm[1:]:
-                product_result *= element  # Multiply subsequent elements
-            print(f"Permutation: {[str(obj) for obj in perm]}")
+    s_list = list(S)
+    alpha = s_list[0].alpha
+    n = s_list[0].n
 
-            # Check if product_result is not already present in result based on the .object attribute
-            if all(product_result.object != intricate.object for intricate in result):
-                result.add(product_result)
+    inputValidator(n, alpha)
+        
+    # Check if all elements in S have the same alpha and n
+
+    if all(obj.alpha == alpha and obj.n == n for obj in s_list[1:]):
+        for i in range(1, len(S) + 1):
+            for perm in permutations(S, i):
+                # Calculate the product of the elements in the permutation
+                product_result = perm[0] 
+                for element in perm[1:]:
+                    product_result *= element  
+                # Check if product_result is not already present in result based on the .object attribute
+                if all(product_result.object != intricate.object for intricate in result):
+                    result.add(product_result)
 
     return result
